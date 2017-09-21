@@ -1,6 +1,7 @@
 #Rock, Paper, Scissors Star Wars edition
 
 from tkinter import *
+from tkinter import messagebox
 import random
 import pygame
 from pygame.locals import *
@@ -94,4 +95,10 @@ label.grid(row = 6, column = 0, columnspan = 2)
 photo1 = PhotoImage(file="output_r5sGEC.gif", height = 100, width = 130)
 #output excute program
 app = Application(root)
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        pygame.mixer.music.stop()
+        root.destroy()
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
